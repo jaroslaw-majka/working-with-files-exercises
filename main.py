@@ -1,4 +1,4 @@
-def csv_reader(print_header=False, separator=',', quote_character="'"):
+def csv_reader(print_header=False, separator=',', quote_character='"'):
     csv_data_list = []
     with open('csv_file_for_reading.csv', 'r') as csv_file:
         for line in csv_file:
