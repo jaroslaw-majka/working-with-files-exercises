@@ -26,5 +26,27 @@ def csv_reader(print_header=False, separator=',', quote_character='"'):
         return csv_data_list
 
 
+def csv_writer(working_data: list, file_name='csv_written_file', separator=',', add_header=False, header=[]):
+    stream_of_data_for_saving = ''
+    # Sprawdza, czy header ma być dodany
+    if add_header:
+        for item in header:
+            if item == header[-1]:
+                stream_of_data_for_saving += item
+            else:
+                stream_of_data_for_saving += item + separator
+
+    # Tworzy string, który zostanie zapisany w pliku csv
+    for element in working_data:
+        for item in element:
+            if item == element[-1]:
+                stream_of_data_for_saving += item
+            else:
+                stream_of_data_for_saving += item + separator
+    # Zapisuje dane w pliku
+    with open(file_name + '.csv', 'w') as csv_file:
+        csv_file.write(stream_of_data_for_saving)
+
+
 if __name__ == '__main__':
-    print(csv_reader())
+    csv_writer(csv_reader())
